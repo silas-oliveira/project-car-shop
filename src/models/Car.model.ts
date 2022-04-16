@@ -1,15 +1,14 @@
 import { Schema, model as createModel, Document } from 'mongoose';
-import { Vehicle } from '../interfaces/VehicleInterface';
 import MongoModel from './Mongo.model';
-
-export interface Car extends Vehicle {
-  doorsQty: number;
-  seatsQty: number;
-}
+import { Car } from '../interfaces/CarInterface';
 
 interface CarDocument extends Car, Document { }
 
 const carSchema = new Schema<CarDocument>({
+  model: String,
+  year: Number,
+  color: String,
+  buyValue: Number,
   doorsQty: Number,
   seatsQty: Number,
 });

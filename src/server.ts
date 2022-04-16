@@ -2,7 +2,7 @@ import CustomRouter from './routes/CustomRouter';
 import App from './app';
 
 import CarController from './controllers/Car.controller';
-import { Car } from './models/Car.model';
+import { Car } from './interfaces/CarInterface';
 
 const server = new App();
 

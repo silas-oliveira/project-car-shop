@@ -1,6 +1,7 @@
 import Service, { ServiceError } from './Generic.service';
-import CarModel, { Car } from '../models/Car.model';
+import CarModel from '../models/Car.model';
 import CarSchema from '../schemas/Car';
+import { Car } from '../interfaces/CarInterface';
 
 class CarService extends Service<Car> {
   constructor(model = new CarModel()) {
@@ -12,7 +13,9 @@ class CarService extends Service<Car> {
     if (!parsed.success) {
       return { error: parsed.error };
     }
-    return this.model.create(obj);
+    const result = await this.model.create(obj);
+    console.log('result', result);
+    return result;
   };
 }
 

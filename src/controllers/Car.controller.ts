@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import Controller, { RequestWithBody, ResponseError } 
   from './Generic.controller';
 import CarService from '../services/Car.service';
-import { Car } from '../models/Car.model';
+import { Car } from '../interfaces/CarInterface';
 
 class CarController extends Controller<Car> {
   private _route: string;
@@ -29,7 +29,7 @@ class CarController extends Controller<Car> {
         return res.status(500).json({ error: this.errors.internal });
       }
       if ('error' in car) {
-        return res.status(400).json(car);
+        return res.status(400).json({ error: car.error.issues[0].message });
       }
       return res.status(201).json(car);
     } catch (err) {

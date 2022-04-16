@@ -1,7 +1,8 @@
 import { Schema, model as createModel, Document } from 'mongoose';
+import { Vehicle } from '../interfaces/VehicleInterface';
 import MongoModel from './Mongo.model';
 
-export interface Car {
+export interface Car extends Vehicle {
   doorsQty: number;
   seatsQty: number;
 }

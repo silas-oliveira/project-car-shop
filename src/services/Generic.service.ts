@@ -1,5 +1,3 @@
-// src/Services/index.ts
-
 import { ZodError } from 'zod';
 import Model from '../models';
 

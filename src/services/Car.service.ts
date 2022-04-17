@@ -14,7 +14,6 @@ class CarService extends Service<Car> {
       return { error: parsed.error };
     }
     const result = await this.model.create(obj);
-    console.log('result', result);
     return result;
   };
 }

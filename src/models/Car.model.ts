@@ -4,7 +4,7 @@ import { Car } from '../interfaces/CarInterface';
 
 interface CarDocument extends Car, Document { }
 
-const carSchema = new Schema<CarDocument>({
+export const carSchema = new Schema<CarDocument>({
   model: String,
   year: Number,
   color: String,

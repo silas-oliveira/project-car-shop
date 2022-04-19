@@ -7,6 +7,7 @@ export interface Modell<T> {
 }
 
 export const carMock = {
+  _id: '1',
   model: 'string',
   year: 1990,
   color: 'string',
@@ -23,3 +24,15 @@ export const invalidCarMock = {
   doorsQty: 6,
   seatsQty: 0,
 };
+
+export const carListMock = [
+  {
+    _id: 1,
+    model: 'string',
+    year: 1990,
+    color: 'string',
+    buyValue: 50000,
+    doorsQty: 4,
+    seatsQty: 4,
+  },
+];

@@ -16,6 +16,8 @@ class CarService extends Service<Car> {
     const result = await this.model.create(obj);
     return result;
   };
+
+  read = async (): Promise<Car[]> => this.model.read();
 }
 
 export default CarService;

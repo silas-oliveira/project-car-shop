@@ -48,27 +48,13 @@ class CarController extends Controller<Car> {
         ? res.json(car)
         : res.status(404).json({ error: this.errors.notFound });
     } catch (error) {
+      if (Object.keys(error as unknown as any).includes('reason')) {
+        return res.status(400).json({ error: this.errors.invalidId });
+      }
+      
       return res.status(500).json({ error: this.errors.internal });
     }
   };
-
-  read = async (
-    _req: Request,
-    res: Response<Car[] | ResponseError>,
-  ): Promise<typeof res> => {
-    try {
-      const objs = await this.service.read();
-      return res.json(objs);
-    } catch (err) {
-      return res.status(500).json({ error: this.errors.internal });
-    }
-  };
-
-  // luis
-
-  // o serne de uma boa palestra, além da horatoria, é você sendo você mesmo
-  // then ou async await
-  // qual area da programacao voce gosta mais??
 }
 
 export default CarController;

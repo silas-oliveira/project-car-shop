@@ -1,27 +1,30 @@
-// template para criação dos testes de cobertura da camada de controller
+import * as sinon from "sinon";
+import { expect } from "chai";
+import { carMock, carMockParams } from "../../../mocks/CarModel.mock";
+import { Car } from "../../../interfaces/CarInterface";
+import {
+  RequestWithBody,
+} from "../../../controllers/Generic.controller";
+import { Response } from "express";
+import CarController from "../../../controllers/Car.controller";
 
 
-// import * as sinon from 'sinon';
-// import chai from 'chai';
-// import chaiHttp = require('chai-http');
+describe('Test the "Controller" layer', () => {
+  const carController = new CarController();
+  beforeEach(sinon.restore);
+  describe('test the ("create") method', () => {
+    const req = { body: carMockParams } as RequestWithBody<Car>;
+    const res = {} as Response;
 
+    before(() => {
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub();
+      sinon.stub(carController.service, "create").resolves(carMock);
+    });
 
-// chai.use(chaiHttp);
-
-// const { expect } = chai;
-
-// describe('Sua descrição', () => {
-
-//   before(async () => {
-//     sinon
-//       .stub()
-//       .resolves();
-//   });
-
-//   after(()=>{
-//     ().restore();
-//   })
-
-//   it('', async () => {});
-
-// });
+    it("test when the function created worked", async () => {
+      await carController.create(req, res);
+      expect((res.status as sinon.SinonStub).calledWith(201));
+    });
+  });
+});

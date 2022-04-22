@@ -16,6 +16,15 @@ export const carMock = {
   seatsQty: 4,
 };
 
+export const carMockParams = {
+  model: 'string',
+  year: 1990,
+  color: 'string',
+  buyValue: 50000,
+  doorsQty: 4,
+  seatsQty: 4,
+};
+
 export const invalidCarMock = {
   model: 'maverick',
   year: 1990,

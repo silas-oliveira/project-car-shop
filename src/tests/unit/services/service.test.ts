@@ -24,6 +24,7 @@ describe("Test the Service layer", () => {
     
     it("When creating a car with the correct values, the following values are returned:", async () => {
       const create = await carService.create(carMock);
+      console.log(create);
       expect(create).to.be.equal(carMock);
     });
   });
@@ -81,7 +82,6 @@ describe("Test the Service layer", () => {
     });
   });
 
-
   
   describe("test the ('Service.readOne') method with correct implemantation", () => {
 
@@ -113,6 +113,82 @@ describe("Test the Service layer", () => {
     it("tests whether the function returns a message of error", async () => {
       const readOne = await carService.readOne("error");
       expect(readOne).to.be.equal(readOne);
+    });
+  });
+
+
+  describe("test the ('Service.update') method with correct implemantation", () => {
+
+    before(() => {
+      Sinon.stub((carService.model) as any, 'update').resolves(carMock);
+    });
+
+    after(() => {
+      Sinon.restore();
+    });
+    
+    it("tests whether the function returns a object update", async () => {
+      const readOne = await carService.update(carMock._id, carMock);
+      expect(readOne).to.be.equal(readOne);
+    });
+  });
+
+
+  describe("test the ('Service.update') method with incorrect implemantation", () => {
+
+    before(() => {
+      Sinon.stub((carService.model) as any, 'update').rejects();
+    });
+
+    after(() => {
+      Sinon.restore();
+    });
+    
+    it("tests whether the function returns error with id incorrect", async () => {
+      try {
+        const readOne = await carService.update(45645564 as any, carMock);
+        return readOne;
+      } catch (error) {
+        expect(error).to.be.exist;
+      }
+    });
+  });
+
+
+  describe("test the ('Service.update') method with correct implemantation", () => {
+
+    before(() => {
+      Sinon.stub((carService.model) as any, 'update').resolves(carMock);
+    });
+
+    after(() => {
+      Sinon.restore();
+    });
+    
+    it("tests whether the function returns a object update", async () => {
+      const readOne = await carService.update(carMock._id, carMock);
+      expect(readOne).to.be.equal(readOne);
+    });
+  });
+
+
+  describe("test the ('Service.update') method with incorrect implemantation", () => {
+
+    before(() => {
+      Sinon.stub((carService.model) as any, 'update').rejects();
+    });
+
+    after(() => {
+      Sinon.restore();
+    });
+    
+    it("tests whether the function returns error with id incorrect", async () => {
+      try {
+        const readOne = await carService.update(45645564 as any, carMock);
+        return readOne;
+      } catch (error) {
+        expect(error).to.be.exist;
+      }
     });
   });
 });

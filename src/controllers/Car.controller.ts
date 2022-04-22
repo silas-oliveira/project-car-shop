@@ -9,7 +9,7 @@ import { Car } from '../interfaces/CarInterface';
 class CarController extends Controller<Car> {
   private _route: string;
 
-  constructor(service = new CarService(), route = '/cars') {
+  constructor(public service = new CarService(), route = '/cars') {
     super(service);
     this._route = route;
   }

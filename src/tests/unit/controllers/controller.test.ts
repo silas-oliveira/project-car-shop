@@ -9,7 +9,7 @@ import { Response } from "express";
 import CarController from "../../../controllers/Car.controller";
 
 
-describe.only('Test the "Controller" layer', () => {
+describe('Test the "Controller" layer', () => {
   const carController = new CarController();
 
 
